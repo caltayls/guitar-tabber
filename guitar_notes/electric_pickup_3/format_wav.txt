@@ -1,0 +1,21 @@
+#!/bin/bash
+for i in 6 5 4 3 2 1
+do
+	
+	mkdir string$i
+	ls *wav | head -n 16 | xargs mv -t string$i
+	
+	j=0
+	for f in string$i/*wav
+	do
+		if [ $j -lt 10 ]
+		then
+			cp $f string$i/${i}0${j}.wav
+		else
+			cp $f string$i/${i}${j}.wav
+		fi
+		j=$((j+1))
+	done
+done
+
+
